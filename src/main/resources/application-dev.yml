@@ -4,3 +4,6 @@ spring:
   liquibase:
     contexts: dev
     change-log: classpath:db/changelog/master.xml
+
+app:
+  version: 0.0.1-SNAPSHOT-dev

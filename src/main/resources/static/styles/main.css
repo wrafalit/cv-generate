@@ -1,0 +1,105 @@
+.container-navbar {
+    background-color: #f26522 !important;
+}
+
+legend {
+    margin-top: 30px;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: inherit;
+    color: #333;
+    border: 0;
+    border-bottom: 1px solid #f26522;
+}
+
+.btn-primary {
+    color: #ffffff;
+    background-color: #f26522;
+    border-color: #f26522;
+}
+
+.btn-primary:hover {
+    color: #ffffff;
+    background-color: #ff6900;
+    border-color: #f26522;
+}
+
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #ffffff;
+  background-color: #f26522 !important;
+  border-color: #f26522 !important;
+}
+
+.btn.focus, .btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(255 23 0 / 25%);
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgb(255 23 0 / 25%);
+}
+
+.row-space {
+    margin-bottom: 20px;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.info-form-column-size {
+    width: 20%;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control:focus {
+    color: #495057;
+    border-color: rgb(255 23 0 / 25%) !important;
+    outline: 0;
+    box-shadow: 0 0 0 0.02rem rgb(255 23 0 / 25%);
+}
+
+.summary {
+    margin-left: 15px;
+}
+
+.img-circle {
+    width: 48px;
+    height: 48px;
+}
+.img-circle {
+    border-radius: 50%;
+}
+img {
+    vertical-align: middle;
+}
+img {
+    border: 0;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 0.2rem;
+}
+
+.version-footer {
+    font-size: 9px;
+    color: #f26522;
+    position: fixed;
+    bottom: 5px;
+    right: 1%;
+}
+
+input:focus {
+  outline: 2px solid #f26522;
+}

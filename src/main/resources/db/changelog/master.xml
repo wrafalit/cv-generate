@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
+
+    <include file="0001_create_table_designation.xml" relativeToChangelogFile="true"/>
+    <include file="0002_create_table_level_experience.xml" relativeToChangelogFile="true"/>
+    <include file="0003_create_table_userinfo.xml" relativeToChangelogFile="true"/>
+
+    <!-- TEST DATA -->
+    <include file="../testdata/0001_designation.sql" relativeToChangelogFile="true"/>
+    <include file="../testdata/0003_level_experience.sql" relativeToChangelogFile="true"/>
+    <include file="../testdata/0002_userinfo.sql" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

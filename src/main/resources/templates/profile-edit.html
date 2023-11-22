@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <!-- Dynamicznie budowany adres do skryptu JS i arkusza stylów -->
+    <script defer src="../static/scripts/common.js" th:src="@{/scripts/common.js}"></script>
+    <link rel="stylesheet" href="../static/styles/main.css" th:href="@{/styles/main.css}">
+</head>
+<body>
+<div id="loggrr-navbar" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container container-navbar">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand">LOGO</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="container body-content">
+    <legend style="padding-bottom: 5px;">
+        <img src="../static/img/avatar.png"
+             th:src="@{/img/avatar.png}"
+             class="img-circle"
+             alt="Avatar">
+        <a th:text="${userInfoDto.firstName} + ' ' + ${userInfoDto.lastName}"></a>
+        <a class="btn btn-primary" href="/User/UpdateAvatar?Length=4">Aktualizuj avatar</a>
+        <a class="btn btn-primary" href="/User/UpdateUserInfo?Length=4">Aktualizuj dane</a>
+    </legend>
+
+    <form action="#" th:action="@{/edit}" th:object="${userInfoDto}" method="post">
+        <div class="row row-space">
+            <div class="col-md-4 info-form-column-size">
+                <div class="form-group">
+                    <label class="control-label col-md-12" for="email">Email</label>
+                    <div class="col-md-12">
+                        <input class="form-control"
+                               th:field="*{email}"
+                               th:value="${userInfoDto.email}"
+                               id="email"
+                               disabled="disabled">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 info-form-column-size">
+                <div class="form-group">
+                    <label class="control-label col-md-12" for="phone">Numer telefonu</label>
+                    <div class="col-md-12">
+                        <input class="form-control"
+                               th:field="*{phoneNumber}"
+                               id="phone"
+                               th:value="${userInfoDto.phoneNumber}"
+                               disabled="disabled">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-space">
+            <div class="col-md-4 info-form-column-size">
+                <div class="form-group">
+                    <label class="control-label col-md-12" for="designation">Stanowisko</label>
+                    <div class="col-md-12">
+                        <input class="form-control"
+                               th:field="*{designationName}"
+                               th:value="${userInfoDto.designationName}"
+                               id="designation"
+                               disabled="disabled">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 info-form-column-size">
+                <div class="form-group">
+                    <label class="control-label col-md-12" for="level-of-experience">Poziom doświadczenia</label>
+                    <div class="col-md-12">
+                        <input class="form-control"
+                               th:field="*{levelOfExperienceName}"
+                               th:value="${userInfoDto.levelOfExperienceName}"
+                               id="level-of-experience"
+                               disabled="disabled">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="summary form-group">
+            <label>Opis doświadczenia</label>
+            <textarea class="form-control" th:field="*{summary}" th:value="${userInfoDto.summary}"></textarea>
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <footer class="version-footer">
+        <p>Wersja aplikacji: <span th:text="${appVersion}"></span></p>
+    </footer>
+</div>
+</body>
+</html>
