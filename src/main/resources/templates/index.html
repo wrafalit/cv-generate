@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Resume portal</h1>
-<form action="#" th:action="@{/submit}" th:object="${emailForm}" method="post">
+<form action="#" th:action="@{/submit}" th:object="${userInfoForm}" method="get">
     <label for="email">Email:</label>
     <input type="email" id="email" th:field="*{email}" required>
     <button type="submit">Submit</button>

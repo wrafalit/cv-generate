@@ -1,15 +1,14 @@
 package com.cvgenerator.cvgenerator;
 
-import com.cvgenerator.cvgenerator.domain.userinfo.UserInfo;
 import com.cvgenerator.cvgenerator.domain.userinfo.UserInfoRepository;
 import com.cvgenerator.cvgenerator.domain.userinfo.UserInfoService;
 import com.cvgenerator.cvgenerator.domain.userinfo.dto.UserInfoDto;
+import com.cvgenerator.cvgenerator.domain.util.UserInfoForm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HomeController {
@@ -24,27 +23,23 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String showEmailForm(Model model) {
-        model.addAttribute("emailForm", new UserInfo());
+    public String showEmailForm() {
         return "index";
     }
 
-    @PostMapping("/submit")
-    public String submitEmailForm(Model model, @ModelAttribute("emailForm") UserInfo userInfo) {
-        String userEmail = userInfo.getEmail();
+    @GetMapping("/submit")
+    public String submitEmailForm(Model model, @ModelAttribute("emailForm") UserInfoForm userInfoForm) {
 
-        UserInfoDto userInfoDto = userInfoService.getUserInfoByEmail(userEmail);
+        UserInfoDto userInfoDto = userInfoService.getUserInfoByEmail(userInfoForm.getEmail());
 
         model.addAttribute("userInfoDto", userInfoDto);
         model.addAttribute("appVersion", appVersion);
         return "profile-edit";
     }
 
-//    @GetMapping("/email")
-//    public String getUserInfoEmail(Model model, @RequestParam(name = "email") String userEmail) {
-//        UserInfoDto userInfoDto = userInfoService.getUserInfoByEmail(userEmail);
-//
-//        model.addAttribute("userInfo", userInfoDto);
-//        return "index";
+//    @PostMapping("/submit")
+//    public String postEdit(Model model, @ModelAttribute UserInfoDto userInfoDto) {
+//        userInfoService.saveUserInfo(userInfoDto);
+//        return "redirect:/submit";
 //    }
 }

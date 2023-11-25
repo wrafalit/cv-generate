@@ -27,4 +27,10 @@ public class UserInfoService {
                 .map(UserInfoDtoMapper::map)
                 .collect(Collectors.toList());
     }
+
+    public void saveUserInfo(UserInfoDto userInfoDto) {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setSummary(userInfoDto.summary());
+        userInfoRepository.save(userInfo);
+    }
 }
