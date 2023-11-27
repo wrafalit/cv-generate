@@ -2,10 +2,9 @@ package com.cvgenerator.cvgenerator;
 
 import com.cvgenerator.cvgenerator.domain.userinfo.UserInfoService;
 import com.cvgenerator.cvgenerator.domain.userinfo.dto.UserInfoDto;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +31,14 @@ public class HomeRestController {
     public List<UserInfoDto> getUser() {
         return userInfoService.getAllUsers();
     }
+
+    @Transactional
+    @PatchMapping(value = "update/{email}")
+    public String putUser(@PathVariable(value = "email") String email, @RequestBody UserInfoDto userInfoDto) {
+        userInfoService.updateUserInfo(email, userInfoDto);
+        return "Updated...";
+    }
+
 
     @GetMapping(value = "/info", produces = "application/json")
     public Map<String, String> getInfo() {

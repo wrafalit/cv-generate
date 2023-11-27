@@ -1,13 +1,22 @@
 package com.cvgenerator.cvgenerator.domain.userinfo.dto;
 
-public record UserInfoDto(
-        Long id,
-        String firstName,
-        String lastName,
-        String email,
-        String phoneNumber,
-        String designationName,
-        String levelOfExperienceName,
-        String summary
-) {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserInfoDto {
+    private Long id;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phoneNumber;
+    private String designationName;
+    private String levelOfExperienceName;
+    private String summary;
+
 }

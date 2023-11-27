@@ -28,9 +28,11 @@ public class UserInfoService {
                 .collect(Collectors.toList());
     }
 
-    public void saveUserInfo(UserInfoDto userInfoDto) {
-        UserInfo userInfo = new UserInfo();
-        userInfo.setSummary(userInfoDto.summary());
-        userInfoRepository.save(userInfo);
+    public void updateUserInfo(String email, UserInfoDto userInfoDto) {
+        UserInfo existingUserInfo = userInfoRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalStateException("User Info not found with email: " + email));
+        existingUserInfo.setSummary(userInfoDto.getSummary());
+        
+        userInfoRepository.save(existingUserInfo);
     }
 }

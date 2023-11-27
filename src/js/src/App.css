@@ -32,11 +32,11 @@
 }
 
 .ant-input {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .red-header {
-  padding: 0px 300px 0px;
+  padding: 0% 20% 0%;
   background-color: white;
 
   justify-content: space-between; /* Użyj flexbox do umieszczenia elementów na końcach kontenera */
