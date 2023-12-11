@@ -1,15 +1,15 @@
 import { 
-    Layout, Menu, Breadcrumb, Input, Button, Form, Row, Col, Tabs, Space, Divider 
+    Layout, Menu, Breadcrumb, Input, Button, Form, Row, Col, Space, Divider,
+    Popconfirm
 } from 'antd';
 
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getUserByEmail, updateUserInfo } from './client'
+import { getUserByEmail, updateUserInfo, generateCV } from './client'
 import UserAatar from './UserAatas';
 import Hover from './Hover';
 import FooterVersion from './FooterVersion';
-import { UploadOutlined } from '@ant-design/icons';
-import { Popconfirm, Upload } from 'antd';
+import TabsComponent from './TabsComponent';
 
 const { Header, Content, Footer } = Layout;
 const { TextArea } = Input;
@@ -51,6 +51,12 @@ function UserInfoPage() {
         }
       };
 
+      const handleGenerateCV = async () => {
+        const userEmail = email; // Adres email użytkownika
+    
+        await generateCV(userEmail); // Wywołanie funkcji do generowania CV
+      };
+
     const formItemLayout = {
         labelCol: { span: 24 },
         wrapperCol: { span: 24 },
@@ -84,19 +90,19 @@ function UserInfoPage() {
             <Breadcrumb style={{ margin: '16px 0' }}>
             </Breadcrumb>
             <div className="site-layout-content">
-                <Space direction="vertical" size={16}>
-                    <Space wrap size={16}>
+                <Space direction="vertical" size={16} style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center' }}>
+                    <Space wrap size={16} >
                         <UserAatar username={`${userInfo.firstName} ${userInfo.lastName}`}/>
-                        <Button type="primary" htmlType="button" onClick={handleSubmit}>Submit</Button>
-                        <Upload>
-                            <Button icon={<UploadOutlined />}>Click to Upload</Button>
-                        </Upload>
-                        <Popconfirm title="Are you sure delete this task?" okText="Yes" cancelText="No">
-                            <Button>Confirm</Button>
-                        </Popconfirm>
                     </Space>
+                    <Space wrap size={16} >
+                        <Popconfirm title="Are you sure? save changes?" okText="Yes" cancelText="No" onConfirm={handleSubmit}>
+                            <Button type="primary" htmlType="button" >Submit</Button>
+                        </Popconfirm>
+                        <Button onClick={handleGenerateCV} >Generate CV</Button>
+                        </Space>
                 </Space>
                 <Divider style={{ borderColor: '#f26522', marginTop: '4px' }}/>
+                
             <Form {...formItemLayout}>
             <Row gutter={[16, 16]}>
               <Col span={8}>
@@ -137,25 +143,12 @@ function UserInfoPage() {
                 </Form.Item>
               </Col>
             </Row>
-            {/* <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            </Form.Item> */}
           </Form>
             </div>
             <Divider style={{ borderColor: '#f26522', marginTop: '10px' }}/>
-            <Tabs
-                onChange={onChangeTab}
-                type="card"
-                items={new Array(3).fill(null).map((_, i) => {
-                const id = String(i + 1);
-                return {
-                    label: `Tab ${id}`,
-                    key: id,
-                    children: `Content of Tab Pane ${id}`,
-                };
-                })}
-            />
+            <TabsComponent/>
         </Content>
-            <Footer style={{ textAlign: 'center' }}>CV Design Generator ©2023 Created by wrafalit</Footer>
+            <Footer style={{ textAlign: 'center', padding: '10px 50px' }}>CV Design Generator ©2023 Created by wrafalit</Footer>
             <FooterVersion />
     </Layout>
     );

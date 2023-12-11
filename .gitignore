@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+/file/cvrsfl.docx
+/file/oficjalna_wersja_pusta.docx
+src/main/resources/file/cv2.docx
+src/main/resources/file/sfl.docx
