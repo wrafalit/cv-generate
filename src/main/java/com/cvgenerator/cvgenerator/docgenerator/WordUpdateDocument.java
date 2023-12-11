@@ -30,13 +30,14 @@ public class WordUpdateDocument {
                 for (XWPFRun xwpfRun : xwpfParagraph.getRuns()) {
                     String docText = xwpfRun.getText(0);
                     //replacement and setting position
+                    //TODO: HashMap with key and value
                     docText = docText.replace("${name}", userInfoDto.getFirstName() + " " + userInfoDto.getLastName());
                     docText = docText.replace("${summary}", userInfoDto.getSummary());
                     docText = docText.replace("${email}", userInfoDto.getEmail());
                     docText = docText.replace("${phone}", userInfoDto.getPhoneNumber());
                     //designation
                     docText = docText.replace("${designation}", userInfoDto.getDesignationName());
-
+                    docText = docText.replace("${level}", userInfoDto.getLevelOfExperienceName());
 
                     xwpfRun.setText(docText, 0);
                 }
