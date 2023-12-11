@@ -49,7 +49,7 @@ easily.
 
 ## What the app looks like
 
-![screenshot1](file/cv generator.gif)
+![screenshot1](https://raw.githubusercontent.com/wrafalit/cv-generate/master/file/cv%20generator.gif)
 ![screenshot1](file/app_screen.png)
 ![screenshot1](file/generated_cv.png)
 
