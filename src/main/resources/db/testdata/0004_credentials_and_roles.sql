@@ -11,7 +11,7 @@ insert into
 values
     ('ADMIN', 'pełne uprawnienia'),   -- 1
     ('EDITOR', 'podstawowe uprawnienia + możliwość zarządzania treściami'),   -- 2
-    ('USER', 'podstawowe uprawnienia, możliwość oddawania głosów');   -- 3
+    ('USER', 'podstawowe uprawnienia, możliwość edycji profilu');   -- 3
 
 insert into
     user_roles (user_id, role_id)
